@@ -130,7 +130,6 @@
    @       IN      NS      sudarsana.it08.com.
    @       IN      A       192.237.3.6
    www     IN      CNAME   sudarsana.it08.com.
-   medkit  IN      A       192.237.3.3
    @       IN      AAAA    ::1
    EOF
 
@@ -170,7 +169,6 @@
    @       IN      NS      pasopati.it08.com.
    @       IN      A       192.237.2.5
    www     IN      CNAME   pasopati.it08.com.
-   medkit  IN      A       192.237.3.3
    @       IN      AAAA    ::1
    EOF
 
@@ -212,7 +210,6 @@
    @       IN      NS      rujapala.it08.com.
    @       IN      A       192.237.2.2
    www     IN      CNAME   rujapala.it08.com.
-   medkit  IN      A       192.237.3.3
    @       IN      AAAA    ::1
    EOF
 
@@ -226,3 +223,119 @@
 (tinggal ss)
 
 ## Soal 6
+
+1. Mengatur kembali `/etc/bind/named.conf.local` pada DNS Master (Sriwijaya) dan menambahkan script berikut:
+
+   ```
+   zone "2.237.192.in-addr.arpa" { // IP dari Kotalingga 192.237.2.5
+    type master;
+    file "/etc/bind/jarkom/2.237.192.in-addr.arpa";
+   };
+   ```
+
+2. Pada `/etc/bind/jarkom/2.237.192.in-addr.arpa` tambahkan:
+   ```
+   ;
+   ; BIND data file for local loopback interface
+   ;
+   $TTL    604800
+   @       IN      SOA     pasopati.it08.com. root.pasopati.it08.com. (
+                                 2         ; Serial
+                            604800         ; Refresh
+                             86400         ; Retry
+                           2419200         ; Expire
+                            604800 )       ; Negative Cache TTL
+   ;
+   2.237.192.in-addr.arpa.       IN      NS      pasopati.it08.com.
+   5                             IN      PTR     pasopati.it08.com.
+   ```
+
+## Soal 7
+
+1. Menambahkan script di bawah untuk tiap domain di `/etc/bind/named.conf.local`. Hal ini sudah diterapkan sebelumnya.
+
+   ```
+   also-notify { 192.237.3.3; };
+   allow-transfer { 192.237.3.3; };
+   ```
+
+2. Pada node Majapahit, kita perlu menambahkan script berikut pada `/etc/bind/named.conf.local`.
+
+   ```
+   zone "sudarsana.it08.com" {
+    type slave;
+    masters { 192.237.1.2; };
+    file "/var/lib/bind/sudarsana.it08.com";
+   };
+
+   zone "pasopati.it08.com" {
+       type slave;
+       masters { 192.237.1.2; };
+       file "/var/lib/bind/pasopati.it08.com";
+   };
+
+   zone "rujapala.it08.com" {
+       type slave;
+       masters { 192.237.1.2; };
+       file "/var/lib/bind/rujapala.it08.com";
+   };
+   ```
+
+## Soal 8
+
+1. Pada `/etc/bind/jarkom/sudarsana.it08.com`, tambahkan konfigurasi berikut:
+   ```
+   cakra  IN      A       192.237.2.4 ; IP Bedahulu
+   ```
+
+## Soal 9
+
+1. Pada `/etc/bind/jarkom/pasopati.it08.com`, tambahkan konfigurasi berikut:
+
+   ```
+   ns1     IN      A       192.237.3.3 ; IP Majapahit
+   panah   IN      NS      ns1
+   ```
+
+2. Pada `/etc/bind/named.conf.local` di node Majapahit, tambahkan konfigurasi berikut:
+
+   ```
+   zone "panah.pasopati.it08.com" {
+      type master;
+      file "/etc/bind/panah/panah.pasopati.it08.com";
+   };
+   ```
+
+3. Untuk mendelegasikan subdomain ke Majapahit, kita perlu mengedit `/etc/bind/named.conf.options` pada node Sriwijaya dan Majapahit sebagai berikut:
+
+   ```
+   allow-query{any;};
+   // dnnsec-validation auto;
+   ```
+
+4. Pada `/etc/bind/panah/panah.pasopati.it08.com`, arahkan ke IP Kotalingga `192.237.2.5`
+   ```
+   ;
+   ; BIND data file for local loopback interface
+   ;
+   $TTL    604800
+   @       IN      SOA     panah.pasopati.it08.com. root.panah.pasopati.it08.com. (
+                                 2         ; Serial
+                            604800         ; Refresh
+                             86400         ; Retry
+                           2419200         ; Expire
+                            604800 )       ; Negative Cache TTL
+   ;
+   @       IN      NS      panah.pasopati.it08.com.
+   @       IN      A       192.237.2.5
+   www     IN      A       192.237.2.5
+   ```
+
+## Soal 10
+
+1. Untuk membuat log, kita dapat melakukan perubahan ke `/etc/bind/panah/panah.pasopati.it08.com` sebagai berikut:
+
+   ```
+   log     IN      A       10.66.1.2
+   www.log IN      CNAME   www.panah.pasopati.it08.com.
+   ```
