@@ -1,4 +1,5 @@
 # KOK ADA SIH MATKUL KAYA JARKOM
+jarkom mnya mnyed
 
 ## Topologi 2
 
