@@ -2,7 +2,7 @@
 
 ## Topologi 2
 
-![alt text](image-1.png)
+![image](https://github.com/user-attachments/assets/7f84d318-47be-47e5-95a0-d20edafdf682)
 
 ## Soal 1
 
