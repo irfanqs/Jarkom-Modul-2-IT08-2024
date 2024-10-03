@@ -341,3 +341,79 @@ a nya aji
    log     IN      A       10.66.1.2
    www.log IN      CNAME   www.panah.pasopati.it08.com.
    ```
+
+## Soal 11
+
+1. mem-forward IP Nusantara melalui DNS Server Majapahit dengan mengedit file /etc/bind/named.conf.options
+    
+    ```
+    options {
+        directory \"/var/cache/bind\";
+    
+        // If there is a firewall between you and nameservers you want
+        // to talk to, you may need to fix the firewall to allow multiple
+        // ports to talk.  See http://www.kb.cert.org/vuls/id/800113
+    
+        // If your ISP provided one or more IP addresses for stable
+        // nameservers, you probably want to use them as forwarders.
+        // Uncomment the following block, and insert the addresses replacing
+        // the all-0's placeholder.
+    
+    	forwarders {
+    		192.168.122.1; // DNS Noesantara Server
+    	};
+    
+        //========================================================================
+        // If BIND logs error messages about the root key being expired,
+        // you will need to update your keys.  See https://www.isc.org/bind-keys
+        //========================================================================
+        //dnssec-validation auto;
+        allow-query {any;};
+    
+        auth-nxdomain no;
+        listen-on-v6 { any; };
+    }
+    ```
+    
+2. Memforward IP Nusantara melalui DNS Server Majapahit dengan mengedit file /etc/bind/named.conf.options (sama seperti  di server Majapahit)
+     ```
+    options {
+        directory \"/var/cache/bind\";
+    
+        // If there is a firewall between you and nameservers you want
+        // to talk to, you may need to fix the firewall to allow multiple
+        // ports to talk.  See http://www.kb.cert.org/vuls/id/800113
+    
+        // If your ISP provided one or more IP addresses for stable
+        // nameservers, you probably want to use them as forwarders.
+        // Uncomment the following block, and insert the addresses replacing
+        // the all-0's placeholder.
+    
+    	forwarders {
+    		192.168.122.1; // DNS Noesantara Server
+    	};
+    
+        //========================================================================
+        // If BIND logs error messages about the root key being expired,
+        // you will need to update your keys.  See https://www.isc.org/bind-keys
+        //========================================================================
+        //dnssec-validation auto;
+        allow-query {any;};
+    
+        auth-nxdomain no;
+        listen-on-v6 { any; };
+    }
+    ```
+3. Mencoba test di clientnya
+    
+    ```
+    ping google.com -c 5
+    ```
+    ![image 1](https://github.com/user-attachments/assets/edc4a7bd-390b-49c1-9e48-08ec9ed7776a)
+   ![image 2](https://github.com/user-attachments/assets/1af0d040-ec43-4ecf-908b-9a556bc4a08a)
+
+
+
+
+
+    
