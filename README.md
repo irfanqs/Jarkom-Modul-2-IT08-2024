@@ -580,7 +580,7 @@
 2. Jalankan `ln -s /etc/nginx/sites-available/web-8080 /etc/nginx/sites-enabled/web-8080`
 3. Jalankan `service php7.0-fpm stop` dan `service php7.0-fpm start`
 
-4. Pada `/etc/nginx/sites-available/web-8080` di node Solok (Load Balancer)
+4. Pada `/etc/nginx/sites-available/web-8080` di node Solok (Load Balancer).
 
    ```
    upstream backend {
@@ -599,7 +599,7 @@
    }
    ```
 
-5. ln -s /etc/nginx/sites-available/web-8080 /etc/nginx/sites-enabled
+5. Jalankan `ln -s /etc/nginx/sites-available/web-8080 /etc/nginx/sites-enabled` pada node Solok.
 
    **Hasil** <br>
 
@@ -654,8 +654,8 @@ Untuk penjelasan dan analisis, cek di [readme] berikut.
 
 ## Soal 17
 
-1. Port 31416 dan port 4697
-2. Jalankan script berikut
+1. Port yang diinginkan adalah port 31416 dan port 4697
+2. Jalankan script berikut pada nodes Tanjungkulai pada file `/etc/nginx/sites-enabled/web-8080`.
 
    ```
    server {
@@ -711,7 +711,7 @@ Untuk penjelasan dan analisis, cek di [readme] berikut.
 
 ## Soal 18
 
-1. Pada Tanjungkulai, jalankan script berikut:
+1. Pada Tanjungkulai, jalankan script berikut pada file `/etc/nginx/sites-enabled/web-8080`.
 
    ```
    server {
