@@ -609,6 +609,17 @@
 
 ## Soal 15
 
+Lakukan instalasi apache-utils
+
+```
+apt-get install apache2-utils
+```
+
+Dan tes pada load balancer Solok
+
+```
+ab -n 1000 -c 100 http://10.76.2.3/
+```
 Untuk penjelasan dan analisis, cek di [readme] berikut.
 
 ## Soal 16
