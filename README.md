@@ -620,7 +620,7 @@ Dan tes pada load balancer Solok
 ```
 ab -n 1000 -c 100 http://10.76.2.3/
 ```
-Untuk penjelasan dan analisis, cek di [[readme]([url](https://github.com/irfanqs/Jarkom-Modul-2-IT08-2024/blob/main/Laporan%20Hasil%20Benchmark%20No%2015))] berikut.
+Untuk penjelasan dan analisis, cek di [readme]([url](https://github.com/irfanqs/Jarkom-Modul-2-IT08-2024/blob/main/Laporan%20Hasil%20Benchmark%20No%2015)) berikut.
 
 ## Soal 16
 
