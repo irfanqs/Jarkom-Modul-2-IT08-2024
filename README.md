@@ -547,7 +547,7 @@
    ![alt text](images/image-17.png)
    ![alt text](images/image-18.png)
 
-   Website akan terus berganti ketika kita mengulang lynx pada node Solok.
+   Website akan terus berganti ketika kita mengulang lynx.
 
 ## Soal 14
 
