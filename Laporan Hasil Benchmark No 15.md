@@ -571,3 +571,6 @@ Dari grafik-grafik terebut dapat dilihat bahwa web server Tanjungkulai memiliki 
     - **Tanjungkulai** adalah server dengan performa terbaik secara keseluruhan, menangani permintaan dengan lebih cepat dan efisien dibandingkan **Bedahulu**.
 
 ### Meme kecil
+<p align="center">
+<img src="images/292b6ba1-981a-46cf-8211-93e9512da8d5.webp">
+</p>
