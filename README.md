@@ -410,7 +410,7 @@ a nya aji
     ping google.com -c 5
     ```
     ![image 1](https://github.com/user-attachments/assets/edc4a7bd-390b-49c1-9e48-08ec9ed7776a)
-   ![image 2](https://github.com/user-attachments/assets/1af0d040-ec43-4ecf-908b-9a556bc4a08a)
+    ![image](https://github.com/user-attachments/assets/ec9f9450-ba1c-4c8d-b266-260133697470)
 
 
 
